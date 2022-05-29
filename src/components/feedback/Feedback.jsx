@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
-import {
-  FeedbackForm,
-  FeedbackFormTitle,
-  FeedbackFormButton,
-  StatisticsList,
-} from './Feedback.styled';
+import Statistics from './Statistics';
+import FeedbackOptions from './FeedbackOptions';
+import Section from './Section';
+import Notification from './Notification';
 
-class Feedback extends Component {
+export default class Feedback extends Component {
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
   };
-
-  // console.log(evt.good);
 
   feedbackGood = () => {
     this.setState(prevState => ({
@@ -33,51 +29,44 @@ class Feedback extends Component {
     }));
   };
 
-  render() {
-    const countTotalFeedback = Object.values(this.state).reduce(
+  countTotalFeedback = () => {
+    return Object.values(this.state).reduce(
       (total, number) => total + number,
       0
     );
+  };
 
+  countPositiveFeedbackPercentage = () => {
+    return this.state.good === 0
+      ? 100 - 100 * ((this.state.bad + this.state.neutral) / 4)
+      : 100 -
+          ((this.state.bad + this.state.neutral) / this.countTotalFeedback()) *
+            100;
+  };
+
+  render() {
     return (
-      <FeedbackForm>
-        <FeedbackFormTitle>Please leave feadback</FeedbackFormTitle>
-        <div>
-          <FeedbackFormButton
-            type="button"
-            onClick={this.feedbackGood}
-            color="green"
-          >
-            good
-          </FeedbackFormButton>
-          <FeedbackFormButton
-            type="button"
-            onClick={this.feedbackNeutral}
-            color="blue"
-          >
-            neutral
-          </FeedbackFormButton>
-          <FeedbackFormButton
-            type="button"
-            onClick={this.feedbackBad}
-            color="red"
-          >
-            bad
-          </FeedbackFormButton>
-        </div>
+      <Section title={'Please leave feadback'}>
+        <FeedbackOptions
+          goodBtn={this.feedbackGood}
+          neutralBtn={this.feedbackNeutral}
+          badBtn={this.feedbackBad}
+        />
         <div>
           <h2>Statistics</h2>
-          <StatisticsList>
-            <li>Good: {this.state.good}</li>
-            <li>Neutral: {this.state.neutral}</li>
-            <li>Bad: {this.state.bad}</li>
-            <li>Total: {this.countTotalFeedback}</li>
-            <li>Positive feedback: {}%</li>
-          </StatisticsList>
+          {this.countTotalFeedback() > 0 ? (
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />
+          ) : (
+            <Notification message={'There is no feedback'} />
+          )}
         </div>
-      </FeedbackForm>
+      </Section>
     );
   }
 }
-
-export default Feedback;

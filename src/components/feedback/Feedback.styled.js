@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FeedbackForm = styled.div`
+export const FeedbackSection = styled.section`
   margin-left: 20px;
 `;
 
