@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
-import { StatisticsList } from './Feedback.styled';
+import { StatisticsList } from './Statistics.styled';
 
 export default function FeedbackOptions({
   good,
   neutral,
   bad,
+  test,
   total,
   positivePercentage,
 }) {
@@ -13,6 +14,7 @@ export default function FeedbackOptions({
       <li>Good: {good}</li>
       <li>Neutral: {neutral}</li>
       <li>Bad: {bad}</li>
+      <li>test: {test}</li>
       <li>Total: {total}</li>
       <li>
         Positive feedback:

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { FeedbackSection, FeedbackFormTitle } from './Feedback.styled';
+import { FeedbackSection, FeedbackFormTitle } from './Section.styled';
 
 export default function Section({ title, children }) {
   return (
