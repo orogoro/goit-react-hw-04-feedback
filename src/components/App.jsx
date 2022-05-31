@@ -11,24 +11,6 @@ export default class App extends Component {
     bad: 0,
   };
 
-  //   feedbackGood = () => {
-  //     this.setState(prevState => ({
-  //       good: prevState.good + 1,
-  //     }));
-  //   };
-
-  //   feedbackNeutral = () => {
-  //     this.setState(prevState => ({
-  //       neutral: prevState.neutral + 1,
-  //     }));
-  //   };
-
-  //   feedbackBad = () => {
-  //     this.setState(prevState => ({
-  //       bad: prevState.bad + 1,
-  //     }));
-  //   };
-
   onLeaveFeedback = lable => {
     this.setState(prevState => ({
       [lable]: prevState[lable] + 1,
@@ -58,10 +40,6 @@ export default class App extends Component {
           <FeedbackOptions
             options={option}
             onLeaveFeedback={this.onLeaveFeedback}
-
-            //   goodBtn={this.onLeaveFeedback}
-            //   neutralBtn={this.feedbackNeutral}
-            //   badBtn={this.feedbackBad}
           />
           <div>
             <h2>Statistics</h2>
