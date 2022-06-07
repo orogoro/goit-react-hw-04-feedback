@@ -20,7 +20,6 @@ export default function FeedbackOptions({ options, onLeaveFeedback }) {
 }
 
 FeedbackOptions.protoTypes = {
-  goodBtn: PropTypes.number.isRequired,
-  neutralBtn: PropTypes.number.isRequired,
-  badBtn: PropTypes.number.isRequired,
+  onLeaveFeedback: PropTypes.func,
+  options: PropTypes.arrayOf(PropTypes.string),
 };
