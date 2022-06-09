@@ -9,6 +9,7 @@ export default function FeedbackOptions({ options, onLeaveFeedback }) {
         <FeedbackFormButton
           key={option}
           type="button"
+          data={option}
           onClick={() => onLeaveFeedback(option)}
           color={getColorLable(option)}
         >
