@@ -49,7 +49,7 @@ export default function App() {
 
   return (
     <div className="container">
-      <Section title={'Please leave feadback'}>
+      <Section title="Please leave feadback">
         <FeedbackOptions
           options={feedbackOption()}
           onLeaveFeedback={onLeaveFeedback}
