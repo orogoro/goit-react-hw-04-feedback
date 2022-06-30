@@ -41,9 +41,10 @@ export default function App() {
   };
 
   const countPositiveFeedbackPercentage = () => {
-    return good === 0
-      ? 100 - 100 * ((bad + neutral) / 4)
-      : 100 - ((bad + neutral) / total()) * 100;
+    return Math.round((good / total()) * 100);
+    // return good === 0
+    //   ? 100 - 100 * ((bad + neutral) / 4)
+    //   : 100 - ((bad + neutral) / total()) * 100;
   };
 
   return (
@@ -64,7 +65,7 @@ export default function App() {
               positivePercentage={countPositiveFeedbackPercentage()}
             />
           ) : (
-            <Notification message={'There is no feedback'} />
+            <Notification message="There is no feedback" />
           )}
         </div>
       </Section>
